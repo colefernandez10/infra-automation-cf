@@ -1,1 +1,22 @@
+# Playbooks are recipes for desired state:
+# This is declarative code: you describe what you want, not how to do it.
+
+- name: Setup base environment for Docker managed nodes
+  hosts: all
+  become: true
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install department-specific packages
+      apt:
+        name: "{{ packages }}"
+        state: present
+
+    - name: Create department directory
+      file:
+        path: "/opt/{{ dept_name | lower }}"
+        state: directory
+        mode: '0755'
 
