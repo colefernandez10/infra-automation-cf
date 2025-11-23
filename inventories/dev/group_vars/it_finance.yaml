@@ -1,1 +1,7 @@
+# it_finance.yaml
+# This makes your setup parameterized. Change one YAML file, rerun playbook, and the infra adapts.
+dept_name: IT-Finance
+packages:
+  - mysql-client
+  - curl
 
